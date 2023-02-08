@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,intial-scale=1.0,minimum-scale=1.0">
+<title>Corona-Virus-Tracker HOME</title>
+<link rel="stylesheet" type="text/css"
+                   th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+   <div class="container-fluid bg-primary p-2">
+      <h1>Corona Virus Tracker Application</h1>
+      <p>This Application List the Current number of cases reported across the globe</p>
+      <h1 th:text="${totalDeathsReported}"></h1>
+      <p>Total Death cases reported as of Today</p>
+   </div>
+   <div>
+      <table class="table table-bordered table-striped table-hover table-responsive-xl">
+         <thead class="thead-dark">
+            <tr>
+              <th>State</th>
+              <th>Country</th>
+              <th>Total Deaths Reported</th>
+              <th>Changes Since Last day</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr th:each="allStates : ${LocationStates}">
+              <td>[[${allStates.States}]]</td>
+              <td>[[${allStates.Country}]]</td>
+              <td>[[${allStates.totalDeaths}]]</td>
+              <td>[[${allStates.changesLastDay}]]</td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+   
+   
+   
+   <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}">
+   </script>
+</body>
+</html>
